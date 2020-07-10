@@ -4,13 +4,16 @@ import api.Global;
 import api.Info;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Controller {
@@ -99,5 +102,13 @@ public class Controller {
         //网速
         netbar.setProgress((20 + Math.random() * 50) / 100);
         netLable.setText("平均网速" + (int) (net * 10) / 10.0 + "kB/s");
+    }
+
+
+    @FXML
+    void showLineChart(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        stage.initOwner(memPie.getScene().getWindow());
+        new RtiLineChart().start(stage);
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
@@ -24,6 +25,7 @@
                         <Font size="21.0" />
                      </font></Label>
                   <ProgressBar fx:id="netbar" layoutX="6.0" layoutY="100.0" prefHeight="23.0" prefWidth="190.0" progress="0.0" />
+                  <JFXButton id="btnSkip" fx:id="btnLineChart" layoutX="16.0" layoutY="148.0" mnemonicParsing="false" onAction="#showLineChart" prefHeight="38.0" prefWidth="168.0" style="-fx-background-color: #05b110; -fx-text-fill: white; -jfx-button-type: RAISED;" text="折线图显示" />
                </children>
             </Pane>
          </children>
