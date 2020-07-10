@@ -24,14 +24,13 @@ public class pMonitor extends Application {
         Scene scene = new Scene(root);
         stage = primaryStage;
 
-       // primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
+        primaryStage.setAlwaysOnTop(Global.onTop);
         primaryStage.setScene(scene);
         primaryStage.setTitle("性能监测工具");
         primaryStage.getIcons().setAll(new Image("icon/icon.png"));
         primaryStage.show();
 
-        primaryStage.setOnCloseRequest(event -> {
-            System.exit(0);
-        });
+        primaryStage.setOnCloseRequest(event -> System.exit(0));
     }
 }

@@ -27,6 +27,7 @@ import java.util.List;
 
 public class Controller {
 
+    public JFXButton btnHard;
     @FXML
     private RadioMenuItem oneItem;   // 1s菜单项
     @FXML
@@ -61,6 +62,9 @@ public class Controller {
     private JFXButton btnStop;                       //停止保存键
     @FXML
     private Menu fileMenu;                           //文件菜单
+
+    @FXML
+    private CheckMenuItem onTopItem;                //是否置顶选项
 
 
     @FXML
@@ -110,6 +114,7 @@ public class Controller {
     @FXML
     public void initialize() {
         Global.realTimeInfo.getTimeInfoThread().start();
+        onTopItem.setSelected(Global.onTop);
         //设置开始停止键的录入状态
         if (!Global.canUseFile) {
             btnStart.setDisable(true);
@@ -314,8 +319,8 @@ public class Controller {
 
         File file = new File(Global.rtiFile);
         String newName = Global.rtiFile.substring(0, Global.rtiFile.length() - 4) + "~" + curTime + ".rti";
-        file.renameTo(new File(newName));
-        new DialogBuilder(btnStart).setTitle("提示").setMessage("保存成功！").setNegativeBtn("确定").create();
+        if (file.renameTo(new File(newName)))
+            new DialogBuilder(btnStart).setTitle("提示").setMessage("保存成功！").setNegativeBtn("确定").create();
     }
 
 
@@ -332,7 +337,9 @@ public class Controller {
 
         Global.fileList = fileList;
         try {
-            new RtiInfo().start(new Stage());
+            Stage stage = new Stage();
+            stage.initOwner(btnStart.getScene().getWindow());
+            new RtiInfo().start(stage);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -341,6 +348,17 @@ public class Controller {
     //硬件详情监听
     @FXML
     void hardWare() throws IOException {
-        new gui.staticInfo.StaticInfo().start(new Stage());
+        Stage stage = new Stage();
+        stage.initOwner(btnStart.getScene().getWindow());
+        new gui.staticInfo.StaticInfo().start(stage);
+    }
+
+    //窗口置顶菜单栏监听
+    @FXML
+    void changeOnTop(ActionEvent event) {
+        Stage stage = (Stage) btnStart.getScene().getWindow();
+        stage.setAlwaysOnTop(onTopItem.isSelected());
+        Global.onTop = onTopItem.isSelected();
+        PropertiseHander.updatePropertise();
     }
 }

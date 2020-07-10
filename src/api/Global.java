@@ -9,6 +9,7 @@ public class Global {
     public static boolean canUseFile = false; //是否可以使用文件
     public static StaticInfo staticInfo ;      //硬件基本信息
     public static RealTimeInfo realTimeInfo = new RealTimeInfo(); //实时信息
+    public static boolean onTop = false;
 
 
     public static boolean saveFile = false;         //是否保存实时性能信息

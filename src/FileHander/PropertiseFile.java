@@ -16,6 +16,7 @@ public class PropertiseFile {
             prop.load(inputStream);
             map.put("path", prop.getProperty("path"));
             map.put("timegap", prop.getProperty("timegap"));
+            map.put("onTop", prop.getProperty("onTop"));
             return map;
         } catch (IOException e) {
             e.printStackTrace();
@@ -27,6 +28,8 @@ public class PropertiseFile {
         Properties properties = new Properties();
         properties.setProperty("timegap", String.valueOf(map.get("timegap")));
         properties.setProperty("path", map.get("path"));
+        properties.setProperty("onTop", map.get("onTop"));
+
 
         String path = "pm.properties";
         FileOutputStream fileOutputStream = null;
@@ -41,7 +44,7 @@ public class PropertiseFile {
                     fileOutputStream.close();
                 }
             } catch (IOException e) {
-                System.out.println("data.properties文件流关闭出现异常");
+                System.out.println("pm.properties文件流关闭出现异常");
             }
         }
     }

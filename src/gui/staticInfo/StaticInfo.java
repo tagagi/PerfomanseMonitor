@@ -21,7 +21,7 @@ public class StaticInfo extends Application {
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
-//        primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
         primaryStage.setTitle("硬件信息");
         primaryStage.getIcons().setAll(new Image("icon/icon.png"));
         primaryStage.show();
