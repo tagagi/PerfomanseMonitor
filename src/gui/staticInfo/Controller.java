@@ -1,7 +1,6 @@
 package gui.staticInfo;
 
 import api.Global;
-import api.StaticInfo;
 import com.jfoenix.controls.JFXButton;
 import gui.dialog.DialogBuilder;
 import javafx.event.ActionEvent;
@@ -10,8 +9,6 @@ import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 public class Controller {
@@ -42,7 +39,7 @@ public class Controller {
         //cpu
         Map<String, String> cpuMap = Global.staticInfo.getCpuInfo();
         String cpuString =
-                "CPU:" +
+                "CPU:\n" +
                         "型号：" + cpuMap.get("vendor") + " " + cpuMap.get("name") + "\n" +
                         "核心数： " + cpuMap.get("cores") + "核\n" +
                         "序列号：" + cpuMap.get("serial");
@@ -51,7 +48,7 @@ public class Controller {
         //os
         Map<String, String> osMap = Global.staticInfo.getOsInfo();
         String osString =
-                "OS:" +
+                "OS:\n" +
                         "版本：" + osMap.get("name") + "\n" +
                         "架构：" + osMap.get("arch") + "\n" +
                         "位数：" + osMap.get("bits");
@@ -60,16 +57,17 @@ public class Controller {
         //内存
         Map<String, String> menMap = Global.staticInfo.getMemInfo();
         String menString =
-                "内存:" +
+                "内存:\n" +
                         "总容量：" + menMap.get("total");
         menLabel.setText(menString);
 
         //硬盘
         Map<String, String> diskMap = Global.staticInfo.getDiskInfo();
         String diskString =
-                "硬盘:" +
+                "硬盘:\n" +
                         "总容量：" + diskMap.get("total") + "\n" +
                         "已使用：" + diskMap.get("use") + "\n" +
+                        "可使用：" + diskMap.get("free") + "\n" +
                         "序列号：" + diskMap.get("serial");
         diskLabel.setText(diskString);
 
@@ -96,7 +94,7 @@ public class Controller {
 
         Global.staticFile = file.getAbsolutePath();
 
-        if(Global.staticInfo.save()){
+        if (Global.staticInfo.save()) {
             new DialogBuilder(btnsave).setTitle("提示").setMessage("保存成功！").setNegativeBtn("确定").create();
         }
     }

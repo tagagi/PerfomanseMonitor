@@ -18,7 +18,7 @@ public class StaticInfo extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("staticInfo.fxml"));
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,480,900);
 
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);

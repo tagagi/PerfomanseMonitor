@@ -1,6 +1,7 @@
 package api;
 
 import FileHander.StaticFile;
+import org.hyperic.sigar.FileSystem;
 import org.hyperic.sigar.*;
 
 import java.io.*;
@@ -10,14 +11,14 @@ import java.net.SocketException;
 import java.util.*;
 
 public class StaticInfo {
-    private  Map<String, String> cpuInfo;  //cpu信息
-    private  Map<String, String> memInfo;  //内存信息
-    private  Map<String, String> diskInfo;  //硬盘信息
-    private  String mainboardSN;           //主板序列号
-    private  Map<String, String> osInfo;  //操作系统信息
-    private  String netInfo;                     //网卡型号
+    private Map<String, String> cpuInfo;  //cpu信息
+    private Map<String, String> memInfo;  //内存信息
+    private Map<String, String> diskInfo;  //硬盘信息
+    private String mainboardSN;           //主板序列号
+    private Map<String, String> osInfo;  //操作系统信息
+    private String netInfo;                     //网卡型号
 
-    public StaticInfo(){
+    public StaticInfo() {
         try {
             CPUInfo();
             memInfo();
@@ -25,7 +26,7 @@ public class StaticInfo {
             osInfo();
             netInfo();
             diskInfo();
-        } catch (IOException | SigarException e ) {
+        } catch (IOException | SigarException e) {
             e.printStackTrace();
         }
 
@@ -79,7 +80,7 @@ public class StaticInfo {
     public void diskInfo() throws SigarException, IOException {
         Sigar sigar = new Sigar();
         FileSystem[] fslist = sigar.getFileSystemList();
-        int total = 0, use = 0;
+        int total = 0, use = 0, usable = 0;
         String serial;
         Map<String, String> map = new HashMap<>();
 
@@ -92,24 +93,26 @@ public class StaticInfo {
                 if (fs.getType() == 2) { // TYPE_LOCAL_DISK : 本地硬盘
                     total += usage.getTotal() / 1024 / 1024;
                     use += usage.getUsed() / 1024 / 1024;
+                    usable += usage.getFree() / 1024 / 1024;
                 }
             }
             map.put("total", total + "GB");
             map.put("use", use + "GB");
+            map.put("free", usable + "GB");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         //获取磁盘序列号
-        Process process = Runtime.getRuntime().exec(new String[] { "wmic", "path", "win32_physicalmedia", "get", "serialnumber"});
+        Process process = Runtime.getRuntime().exec(new String[]{"wmic", "path", "win32_physicalmedia", "get", "serialnumber"});
         process.getOutputStream().close();
         Scanner sc = new Scanner(process.getInputStream());
         String property = sc.next();
         serial = sc.next();
-        while(sc.hasNext()){
-            serial += "\n              "+sc.next();
+        while (sc.hasNext()) {
+            serial += "\n              " + sc.next();
         }
-        map.put("serial",serial);
+        map.put("serial", serial);
 
         diskInfo = map;
     }
@@ -124,12 +127,12 @@ public class StaticInfo {
         Map<String, String> map = System.getenv();
         name = props.getProperty("os.name");
         arch = props.getProperty("os.arch");
-        bits=OS.getDataModel();
+        bits = OS.getDataModel();
 
         Map<String, String> ans = new HashMap<>();
         ans.put("name", name);
         ans.put("arch", arch);
-        ans.put("bits",bits);
+        ans.put("bits", bits);
 
         osInfo = ans;
     }
@@ -175,15 +178,15 @@ public class StaticInfo {
         for (NetworkInterface netint : Collections.list(nets)) {
             Enumeration<InetAddress> inetAddresses = netint.getInetAddresses();
             for (InetAddress inetAddress : Collections.list(inetAddresses)) {
-                if(inetAddress.toString().substring(0,8).equals("/192.168")){
+                if (inetAddress.toString().substring(0, 8).equals("/192.168")) {
                     netInfo = netint.getDisplayName();
                 }
             }
         }
     }
 
-    public boolean save(){
-        return StaticFile.save(cpuInfo,osInfo,memInfo,diskInfo,netInfo,mainboardSN);
+    public boolean save() {
+        return StaticFile.save(cpuInfo, osInfo, memInfo, diskInfo, netInfo, mainboardSN);
     }
 
 //    public static void main(String[] args) throws SigarException, IOException {
@@ -209,27 +212,27 @@ public class StaticInfo {
 //
 //    }
 
-    public  Map<String, String> getCpuInfo() {
+    public Map<String, String> getCpuInfo() {
         return cpuInfo;
     }
 
-    public  Map<String, String> getMemInfo() {
+    public Map<String, String> getMemInfo() {
         return memInfo;
     }
 
-    public  Map<String, String> getDiskInfo() {
+    public Map<String, String> getDiskInfo() {
         return diskInfo;
     }
 
-    public  String getMainboardSN() {
+    public String getMainboardSN() {
         return mainboardSN;
     }
 
-    public  Map<String, String> getOsInfo() {
+    public Map<String, String> getOsInfo() {
         return osInfo;
     }
 
-    public  String getNetInfo() {
+    public String getNetInfo() {
         return netInfo;
     }
 }

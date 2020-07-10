@@ -34,6 +34,7 @@ public class StaticFile {
                 "--------------------硬盘--------------------\n" +
                         "总容量：" + diskMap.get("total") + "\n" +
                         "已使用：" + diskMap.get("use") + "\n" +
+                        "总容量：" + diskMap.get("free") + "\n" +
                         "序列号：" + diskMap.get("serial") + "\n";
         //网卡
         String netString = "--------------------网卡--------------------\n型号：" + netInfo + "\n";
