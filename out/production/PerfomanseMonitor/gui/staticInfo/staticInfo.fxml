@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.staticInfo.Controller">
+   <children>
+      <Label fx:id="cpuLable" prefHeight="150.0" prefWidth="500.0" style="-fx-background-color: AliceBlue;" text="cpu&#10;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="OSLable" prefHeight="150.0" prefWidth="500.0" style="-fx-background-color: AntiqueWhite;" text="os">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="menLabel" prefHeight="150.0" prefWidth="500.0" style="-fx-background-color: AliceBlue;" text="men">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="diskLabel" prefHeight="150.0" prefWidth="500.0" style="-fx-background-color: AntiqueWhite;" text="disk">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="nicLabel" prefHeight="150.0" prefWidth="500.0" style="-fx-background-color: AliceBlue;" text="nic">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="mbLabel" prefHeight="150.0" prefWidth="500.0" style="-fx-background-color: AntiqueWhite;" text="mianborrd">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Pane prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: AliceBlue;">
+         <children>
+            <JFXButton fx:id="btnsave" layoutX="150.0" layoutY="15.0" onAction="#saveStaticInfo" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #05b110; -fx-text-fill: white; -jfx-button-type: RAISED;" text="保存" />
+         </children>
+      </Pane>
+   </children>
+</VBox>

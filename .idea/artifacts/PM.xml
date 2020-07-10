@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PM">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="PM.jar">
+      <element id="module-output" name="PerfomanseMonitor" />
+      <element id="file-copy" path="$PROJECT_DIR$/lib/com.springsource.org.hyperic.sigar-1.6.3.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/lib/ikonli-core-2.4.0.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/lib/ikonli-fontawesome5-pack-2.4.0.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/lib/ikonli-ionicons-pack-2.4.0.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/lib/ikonli-javafx-2.4.0.jar" />
+      <element id="library" level="project" name="jfoenix-0.0.0-SNAPSHOT" />
+      <element id="archive" name="archive.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$USER_HOME$/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

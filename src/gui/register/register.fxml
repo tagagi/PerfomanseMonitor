@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="480.0" stylesheets="@../css/jfoenix-components.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.register.Controller">
+   <children>
+      <JFXTextField id="name" fx:id="user" layoutX="90.0" layoutY="25.0" maxWidth="309.0" prefHeight="40.0" prefWidth="309.0" style="-fx-background-color: rgb(242,242,242); -fx-font-size: 20;" />
+      <JFXPasswordField id="password" fx:id="psw1" layoutX="90.0" layoutY="112.0" maxWidth="310.0" prefHeight="40.0" prefWidth="310.0" style="-fx-background-color: rgb(242,242,242); -fx-font-size: 20;" />
+      <JFXPasswordField id="password2" fx:id="psw2" layoutX="90.0" layoutY="199.0" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: rgb(242,242,242); -fx-font-size: 20;" />
+      <JFXButton id="btnComfirm" fx:id="btnComfirm" layoutX="91.0" layoutY="271.0" maxWidth="86.0" mnemonicParsing="false" onAction="#comfirm" prefHeight="38.0" prefWidth="86.0" styleClass="button-raised" text="确认" />
+      <JFXButton id="btnQuit" fx:id="btnQuit" layoutX="296.0" layoutY="271.0" maxWidth="86.0" mnemonicParsing="false" onAction="#quit" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #FF3333; -fx-text-fill: white; -jfx-button-type: RAISED;" text="退出" />
+   </children>
+</Pane>

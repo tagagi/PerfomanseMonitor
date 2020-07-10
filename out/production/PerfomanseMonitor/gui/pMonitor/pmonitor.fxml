@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="mainBox" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.pMonitor.Controller">
+    <MenuBar stylesheets="@../css/jfoenix-components.css" VBox.vgrow="NEVER">
+        <Menu mnemonicParsing="false" text="设置">
+            <Menu mnemonicParsing="false" text="采集时间间隔">
+                <RadioMenuItem id="oneSecond" fx:id="oneItem" mnemonicParsing="false" onAction="#timeMenuClick" text="1s">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="timegap" />
+                    </toggleGroup>
+                </RadioMenuItem>
+                <RadioMenuItem id="fiveSecond" fx:id="fiveItem" mnemonicParsing="false" onAction="#timeMenuClick" text="5s" toggleGroup="$timegap" />
+                <RadioMenuItem id="tenSecond" fx:id="tenItem" mnemonicParsing="false" onAction="#timeMenuClick" text="10s" toggleGroup="$timegap" />
+            </Menu>
+            <MenuItem fx:id="pathItem" mnemonicParsing="false" onAction="#choseItem" text="文件默认保存目录" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="账户">
+            <MenuItem fx:id="loginItem" mnemonicParsing="false" onAction="#login" text="登录" />
+            <MenuItem fx:id="changePswItem" mnemonicParsing="false" onAction="#changePsw" text="修改密码" />
+        </Menu>
+        <Menu fx:id="fileMenu" mnemonicParsing="false" text="文件">
+            <MenuItem fx:id="readITEM" mnemonicParsing="false" onAction="#readRTI" text="读取性能文件" />
+        </Menu>
+    </MenuBar>
+    <!--<ScrollPane  style="-fx-border-color: rgb(192,192,192);">-->
+    <TilePane prefHeight="700.0" prefWidth="1200.0">
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <LineChart fx:id="cpuLineChart" prefHeight="350.0" prefWidth="600.0">
+                <xAxis>
+                    <CategoryAxis side="BOTTOM" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis side="LEFT" />
+                </yAxis>
+            </LineChart>
+        </Pane>
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <LineChart fx:id="memLineChart" prefHeight="350.0" prefWidth="600.0">
+                <xAxis>
+                    <CategoryAxis side="BOTTOM" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis side="LEFT" />
+                </yAxis>
+            </LineChart>
+        </Pane>
+        <Pane prefHeight="350.0" prefWidth="600.0">
+            <LineChart fx:id="netLineChart" prefHeight="350.0" prefWidth="600.0">
+                <xAxis>
+                    <CategoryAxis side="BOTTOM" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis side="LEFT" />
+                </yAxis>
+            </LineChart>
+        </Pane>
+        <Pane prefHeight="200.0" prefWidth="200.0">
+            <LineChart fx:id="diskLineChart" prefHeight="350.0" prefWidth="600.0">
+                <xAxis>
+                    <CategoryAxis side="BOTTOM" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis side="LEFT" />
+                </yAxis>
+            </LineChart>
+        </Pane>
+    </TilePane>
+    <!--        </ScrollPane>-->
+    <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/jfoenix-components.css">
+        <JFXButton fx:id="btnStart" layoutX="203.0" layoutY="15.0" onAction="#saveFile" styleClass="button-raised" text="开始保存" />
+        <JFXButton fx:id="btnStop" layoutX="795.0" layoutY="15.0" onAction="#stopSave" prefHeight="39.0" style="-jfx-button-type: RAISED; -fx-text-fill: white; -fx-background-color: #FF3333;" styleClass="button-raised" text="停止保存" />
+        <JFXButton fx:id="btnHard" layoutX="500.0" layoutY="15.0" onAction="#hardWare" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #05b110; -fx-text-fill: white; -jfx-button-type: RAISED;" text="硬件详情" />
+    </Pane>
+</VBox>

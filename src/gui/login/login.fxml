@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="250.0" minWidth="450.0" prefHeight="250.0" prefWidth="440.0" stylesheets="@../css/jfoenix-components.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.login.Controller">
+   <children>
+      <JFXTextField id="name" fx:id="user" layoutX="82.0" layoutY="25.0" prefHeight="40.0" prefWidth="288.0" style="-fx-background-color: rgb(242,242,242); -fx-font-size: 20;" />
+      <JFXPasswordField id="password" fx:id="psw" layoutX="82.0" layoutY="110.0" prefHeight="40.0" prefWidth="288.0" style="-fx-background-color: rgb(242,242,242); -fx-font-size: 20;" />
+      <JFXButton fx:id="comfirm" layoutX="62.0" layoutY="186.0" maxWidth="86.0" onAction="#comfirm" prefHeight="39.0" prefWidth="108.0" styleClass="button-raised" text="确认" />
+      <JFXButton id="btnSkip" fx:id="skip" layoutX="192.0" layoutY="186.0" mnemonicParsing="false" onAction="#skip" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #05b110; -fx-text-fill: white; -jfx-button-type: RAISED;" text="跳过" />
+      <JFXButton id="btnQuit" fx:id="quit" layoutX="317.0" layoutY="186.0" mnemonicParsing="false" onAction="#quit" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: #FF3333; -fx-text-fill: white; -jfx-button-type: RAISED;" text="退出" />
+   </children>
+</AnchorPane>
